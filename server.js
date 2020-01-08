@@ -33,20 +33,11 @@ app.get("/", (req, res) => {
 });
 
 app.post("/signin", (req, res) => {
-  /*
-    // Load hash from your password DB.
-bcrypt.compare("bacon", hash, function(err, res) {
-    // res == true
-  });
-  bcrypt.compare("veggies", hash, function(err, res) {
-    // res = false
-  });
-  */
   if (
     req.body.email === database.users[0].email &&
     req.body.password === database.users[0].password
   ) {
-    res.json("success");
+    res.json(database.users[0]);
   } else {
     res.status(400).json("error logging in");
   }
@@ -54,13 +45,6 @@ bcrypt.compare("bacon", hash, function(err, res) {
 
 app.post("/register", (req, res) => {
   const { email, name, password } = req.body;
-
-  bcrypt.genSalt(10, function(err, salt) {
-    bcrypt.hash(password, salt, function(err, hash) {
-      console.log(hash);
-    });
-  });
-
   database.users.push({
     id: "125",
     name: name,
