@@ -57,6 +57,7 @@ app.post("/register", (req, res) => {
       console.log(hash);
     });
   });
+
   database.users.push({
     id: "125",
     name: name,
